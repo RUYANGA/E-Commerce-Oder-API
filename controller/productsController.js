@@ -1,4 +1,4 @@
-const Product = require('../modeles/product.modeles'); // Fixed typo in 'models'
+const Product = require('../modeles/productModeles'); // Fixed typo in 'models'
 const cloudinary = require('../utile/cloudinary'); // Import Cloudinary config
 
 const postProducts = async (req, res) => {

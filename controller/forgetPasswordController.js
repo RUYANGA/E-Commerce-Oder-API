@@ -1,4 +1,4 @@
-const User =require('../modeles/user.modele');
+const User =require('../modeles/userModele');
 const nodemailer =require('nodemailer');
 const jwt=require('jsonwebtoken');
 const bcrypt=require('bcrypt');

@@ -1,5 +1,5 @@
 const router=require('express').Router();
-const { Forget_Password, Reset_Password } = require('../controller/forget-password.controller');
+const { Forget_Password, Reset_Password } = require('../controller/forgetPasswordController');
 const { VerifyTokenandauthorization } = require('../middlewares/VerifyToken');
 
 //forget passwod router

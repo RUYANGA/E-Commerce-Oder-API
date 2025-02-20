@@ -1,4 +1,4 @@
-const User =require('../modeles/user.modele');
+const User =require('../modeles/userModele');
 const bcrypt =require('bcrypt');
 const router=require('express').Router();
 const jwt=require('jsonwebtoken');

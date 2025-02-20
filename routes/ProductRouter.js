@@ -1,7 +1,7 @@
 const router=require('express').Router();
 const { verifyTokenAndadmin, VerifyTokenandauthorization  }=require('../middlewares/VerifyToken');
-const {postProducts}=require('../controller/products.controller')
-const Product=require('../modeles/product.modeles')
+const {postProducts}=require('../controller/productsController')
+const Product=require('../modeles/productModeles')
 //Upload products
 
 
