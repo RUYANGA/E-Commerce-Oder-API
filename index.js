@@ -1,12 +1,12 @@
 require('dotenv').config();
 const express=require('express');
 const app=express();
-var user=require('./modeles/user.modele.js')
-const UserAuth=require('./routes/Auth.routes.js');
-const Users=require('./routes/User.router')
-const forgetPassword=require('./routes/Forget-password.router');
-const postProduct=require('./routes/Product.router');
-const card =require('./routes/Card.route')
+var user=require('./modeles/userModele.js')
+const UserAuth=require('./routes/AuthRoutes.js');
+const Users=require('./routes/UserRouter')
+const forgetPassword=require('./routes/ForgetPasswordRouter');
+const postProduct=require('./routes/ProductRouter');
+const card =require('./routes/CardRoute')
 const bodyParser = require('body-parser');
 
 
