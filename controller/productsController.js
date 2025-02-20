@@ -1,18 +1,15 @@
 const Product = require('../modeles/product.modeles'); // Fixed typo in 'models'
 const cloudinary = require('../utile/cloudinary'); // Import Cloudinary config
-const fs = require('fs'); // To delete local file after upload
 
 const postProducts = async (req, res) => {
     try {
-        if (!req.file) {
-            return res.status(400).json({ message: 'File to upload required' });
-        }
+        let image=null;
+        if (req.file) {
 
         // Upload image to Cloudinary
-        const uploadResult = await cloudinary.uploader.upload(req.file.path, {
-            folder: 'products' // Optional: Organize images in a folder
-        });
-
+        const uploadResult = await cloudinary.uploader.upload(req.file.path);
+           image=uploadResult ? uploadResult.secure_url:null;
+        }
         // Extract fields from request body
         const { title, description, price, category, size } = req.body;
 
@@ -23,12 +20,9 @@ const postProducts = async (req, res) => {
             price: parseFloat(price),
             category,
             size,
-            image: uploadResult.secure_url, // Store Cloudinary URL instead of local file path
+            image,// Store Cloudinary URL instead of local file path
             user: req.params.id
         });
-
-        // Delete the locally uploaded file after Cloudinary upload
-        fs.unlinkSync(req.file.path);
 
         res.json(product);
     } catch (error) {

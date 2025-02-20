@@ -8,9 +8,10 @@ router.patch('/:id',VerifyTokenandauthorization,UpdateUser );
 //User delete
 router.delete('/:id',VerifyTokenandauthorization,DeleteUser);
 
-//Get all user and filter
+//Get all user
 router.get('/users',verifyTokenAndadmin,GetallUser);
 
+//User status
 router.get('/status',verifyTokenAndadmin,StatUser);
 
 

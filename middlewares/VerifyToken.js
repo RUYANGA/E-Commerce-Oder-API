@@ -38,7 +38,4 @@ const verifyTokenAndadmin=async(req,res,next)=>{
 
 }
 
-
-
-
 module.exports={VerifyToken,VerifyTokenandauthorization,verifyTokenAndadmin}

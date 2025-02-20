@@ -1,6 +1,6 @@
 const { Status } = require('whatsapp-web.js');
 const { verifyTokenAndadmin } = require('../middlewares/VerifyToken');
-const User=require('../modeles/user.modele');
+const User=require('../modeles/userModele');
 const bcrypt =require('bcrypt');
 const { get } = require('mongoose');
 
@@ -16,12 +16,8 @@ const UpdateUser= async (req, res) => {
         }
     
         const hashpassword = await bcrypt.hash(password1, 12);
-    
-        const updatedUser = await User.findByIdAndUpdate(
-            id,
-            { email, username, password1: hashpassword },
-            { new: true }
-        );
+
+        const updatedUser=await User.findByIdAndUpdate({_id:id},{$set:{username,email,password1}},{new:true})
     
         if (!updatedUser) {
             return res.status(404).json({ message: "User not found" });
@@ -41,7 +37,7 @@ const DeleteUser= async(req,res)=>{
         
         if(id){
 
-            const deletUser =await User.findByIdAndDelete(id);
+            const deletUser =await User.findByIdAndDelete({_id:id});
             if(deletUser) return res.status(200).json("User deleted successfuly");
             return res.json({Message:"user not found"});
         }else{
