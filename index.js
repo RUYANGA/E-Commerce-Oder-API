@@ -35,10 +35,9 @@ app.use(express.urlencoded({ extended: true }))
 
 //Routers
 
-app.get('/:id',async(req,res)=>{
-    const id=req.params.id;
-    const t=await user.findById(id)
-    res.send(`<h1 style='color:blue'>Admin is : ${t.username}  </h1>`)
+app.get('/',async(req,res)=>{
+   
+    res.send(`<h1 style='color:blue'>Welcome to our E-commerce API </h1>`)
 }
 )
 app.use('/api/user/',UserAuth);
