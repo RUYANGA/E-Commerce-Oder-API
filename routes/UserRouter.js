@@ -1,5 +1,5 @@
 const router=require('express').Router();
-const { UpdateUser, DeleteUser, GetallUser, StatUser } = require('../controller/usersCntroller');
+const { UpdateUser, DeleteUser, GetallUser, StatUser } = require('../controller/usersController');
 const { VerifyToken ,VerifyTokenandauthorization, verifyTokenAndadmin} = require('../middlewares/VerifyToken');
 
 //Update user
