@@ -32,6 +32,22 @@ const Register= async(req,res)=>{
             password1:pass1,
                       
         });
+         const Token= jwt.sign(
+                 {
+                     id:existEmail._id,
+                     email:existEmail.email,
+                     isAdmin:existEmail.isAdmin
+                     
+                 },
+                 process.env.JWT_SEC,
+                 {
+                     expiresIn:"1day"
+                 }
+             );
+             
+        req.session={
+                jwt:Token
+             }
 
         //user is registed successefully
         res.json({message:"User register successefully"});
@@ -74,7 +90,9 @@ const Login=async(req,res)=>{
                  }
              );
              
-             User.token=Token;    
+             req.session={
+                jwt:Token
+             }
  
              //user login successefully
              return res.status(200).json({...other,Token});

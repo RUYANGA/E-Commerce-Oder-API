@@ -8,7 +8,7 @@ const forgetPassword=require('./routes/ForgetPasswordRouter');
 const postProduct=require('./routes/ProductRouter');
 const card =require('./routes/CardRoute')
 const bodyParser = require('body-parser');
-
+const cookieSession =require('cookie-session')
 
 const port=process.env.PORT||4000;
 const cors=require('cors')
@@ -26,12 +26,16 @@ mongoose.connect(process.env.MONGODB_URL)
     console.log('Error to connect DB',e.message);
 })
 
-
+app.set('trust proxy',true)
 
 //Middlewares
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieSession({
+    signed:false,
+    secure:false
+}))
 
 //Routers
 
